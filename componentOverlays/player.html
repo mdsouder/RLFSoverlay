@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <style>
+            td, th {
+                text-align: center;
+                padding: 10px;
+                font-size: 25px;
+            }
+            .playerStats {
+                position: absolute;
+                width: 200px;
+                top: 700px;
+                color: black;
+                font-size: 20px;
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: grey;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="playerStats">
+            <table class="roster">
+                <tr class="name">
+                    <th class="value"></th>
+                </tr>
+                <tr class="score">
+                    <th class="score">SCORE</th>
+                    <td class="value">0</td>
+                </tr>
+                <tr class="goals">
+                    <th class="goals">GOALS</th>
+                    <td class="value">0</td>
+                </tr>
+                <tr class="shots">
+                    <th class="shots">SHOTS</th>
+                    <td class="value">0</td>
+                </tr>
+                <tr class="assists">
+                    <th class="assists">ASSISTS</th>
+                    <td class="value">0</td>
+                </tr>
+                <tr class="saves">
+                    <th class="saves">SAVES</th>
+                    <td class="value">0</td>
+                </tr>
+            </table>
+        </div>
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="../javascript/webSocket.js"></script>
+        <script>
+            //WsSubscribers from webSocket.js
+            WsSubscribers.init(49322, true);
+            WsSubscribers.subscribe("game", "update_state", (d) => {
+                //Player Stats
+                    currentPlayer = []
+                    for (let player in d.players ) {
+                        if(d['game']['target'] == player)
+                            currentPlayer.push(player)
+                    };             
+
+                    //Game State Graphics
+                    if(!d['game']['hasTarget']) {
+                        $(".playerStats").fadeTo(0,0.0)
+                    }
+                    else {
+                        $(".playerStats").fadeTo(0,1.0)
+                    }
+
+                //Player Stats
+                    if (currentPlayer[0] != null) {
+                        $(".playerStats .name .value").text(d['players'][currentPlayer[0]]['name'])
+                        $(".playerStats .score .value").text(d['players'][currentPlayer[0]]['score'])
+                        $(".playerStats .goals .value").text(d['players'][currentPlayer[0]]['goals'])
+                        $(".playerStats .shots .value").text(d['players'][currentPlayer[0]]['shots'])
+                        $(".playerStats .assists .value").text(d['players'][currentPlayer[0]]['assists'])
+                        $(".playerStats .saves .value").text(d['players'][currentPlayer[0]]['saves'])
+                    }                    
+                });
+        </script>
+    </body>
+</html>

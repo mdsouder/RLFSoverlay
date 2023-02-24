@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <style>
+            td, th {
+                text-align: center;
+                padding: 10px;
+                font-size: 25px;
+            }
+            b {
+                font-size: 100px;
+            }
+            .scorebug {
+                position: absolute;
+                width: 450px;
+                height: 150px;
+                left: 710px;
+                color: black;
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="scorebug">
+            <table class="alignment">
+                <tr>
+                    <td valign="top">
+                        <table class="team-info">
+                            <tr class="team left">
+                                <th class="name">Blue</th>
+                            </tr>
+                            <tr class="team left">
+                                <td class="score">0</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td valign="top">
+                        <b class="time">000</b>
+                    </td>
+                    <td valign="top">
+                        <table>
+                            <tr class="team right">
+                                <th class="name">Orange</th>
+                            </tr>
+                            <tr class="team right">
+                                <td class="score">0</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="../javascript/webSocket.js"></script>
+        <script>
+            //WsSubscribers from webSocket.js
+            WsSubscribers.init(49322, true);
+            WsSubscribers.subscribe("game", "update_state", (d) => {
+                //Team Names and Score
+                    $(".scorebug .team.left .name").text(d['game']['teams'][0]['name']);
+                    $(".scorebug .team.right .name").text(d['game']['teams'][1]['name']);
+                    
+                    $(".scorebug .team.left .score").text(d['game']['teams'][0]['score']);
+                    $(".scorebug .team.right .score").text(d['game']['teams'][1]['score']);
+                
+                //Clock
+                    timeConst = d['game']['time_seconds']/60;
+                    minutes = Math.trunc(timeConst);
+                    seconds = Math.round((timeConst - Math.floor(timeConst)) * 60);
+                    if (d['game']['isOT']) {
+                        minutes = "+" + minutes
+                    }
+                    if (seconds < 10) {
+                        seconds = "0" + seconds
+                    }
+
+                    $(".scorebug .time").text(minutes + ":" + seconds);
+                    }                    
+                );
+        </script>
+    </body>
+</html>

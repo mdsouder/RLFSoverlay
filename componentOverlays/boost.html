@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <style>
+            .boostBar {
+                position: absolute;
+                left: 1400px;
+                top: 950px;
+                width: 500px;
+                height: 50px;
+                background-color: yellow;
+                font-size: 45px;
+                font-family: Arial, Helvetica, sans-serif;
+                text-align: left;
+                text-indent: 10px;
+            }
+            .boostBarBackground {
+                position: absolute;
+                left: 1400px;
+                top: 950px;
+                width: 500px;
+                height: 50px;
+                background-color: red;
+                font-size: 45px;
+                font-family: Arial, Helvetica, sans-serif;
+                text-align: left;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="boostBarBackground"></div>
+        <div class="boostBar">
+            0
+        </div>
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="../javascript/webSocket.js"></script>
+        <script>
+            //WsSubscribers from webSocket.js
+            WsSubscribers.init(49322, true);
+            WsSubscribers.subscribe("game", "update_state", (d) => {
+                //Sets current viewed player
+                    currentPlayer = []
+                    for (let player in d.players ) {
+                        if(d['game']['target'] == player)
+                            currentPlayer.push(player)
+                    };             
+                
+                //Show or Hide boost on target state
+                    if(!d['game']['hasTarget']) {
+                        $(".boostBar").fadeTo(0,0.0)
+                        $(".boostBarBackground").fadeTo(0,0.0)
+                    }
+                    else {
+                        $(".boostBar").fadeTo(0,1.0)
+                        $(".boostBarBackground").fadeTo(0,1.0)
+                    }
+
+                //Change bar size and number
+                    if (currentPlayer[0] != null) {                     
+                        $(".boostBar").text(d['players'][currentPlayer[0]]['boost'])
+                        $(".boostBar").width(500*(d['players'][currentPlayer[0]]['boost']/100))
+                    }                    
+                });
+        </script>
+    </body>
+</html>
