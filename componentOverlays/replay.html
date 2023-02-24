@@ -1,0 +1,101 @@
+<html>
+    <head>
+        <style>
+            .replayBar {
+                position: absolute;
+                left: 0px;
+                top: 950px;
+                width: 1920px;
+                height: 100px;
+                background-color: purple;
+                font-size: 400px;
+                font-family: Arial, Helvetica, sans-serif;
+                text-align: left;
+                text-indent: 10px;
+            }
+            table {
+                margin-left: 250px;
+            }
+            th,td {
+                font-size: 20px;
+                text-emphasis-color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="replayBar">
+            <table class="alignment">
+                <tr>
+                    <td valign="top">
+                        <table>
+                            <tr class="scorer">
+                                <th class="title">Scorer</th>
+                                <td class="icon"><img src="../assets/goal_icon.png" width="50px" height="50px"></td>
+                            </tr>
+                            <tr class="scorer">
+                                <td class="name"></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td valign="top">
+                        <table>
+                            <tr class="assister">
+                                <th class="title">Assister</th>
+                                <td class="icon"><img class="img" src="../assets/assist_icon.png" width="50px" height="50px"></td>
+                            </tr>
+                            <tr class="assister">
+                                <td class="name"></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td valign="top">
+                        <table>
+                            <tr class="ball speed">
+                                <th class="title">Ball Speed</th>
+                                <td class="icon"><img src="../assets/shot_on_goal_icon.png" width="50px" height="50px"></td>
+                            </tr>
+                            <tr class="ball speed">
+                                <td class="value">0</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="../javascript/webSocket.js"></script>
+        <script>
+            //WsSubscribers from webSocket.js
+            WsSubscribers.init(49322, true);
+            WsSubscribers.subscribe("game", "goal_scored", (d) => {
+                $(".replayBar .scorer .name").text(d['scorer']['name']);
+
+                //Game returns all goal speed values in KPH
+                kphGoalSpeed = d['goalspeed']
+                mphConversion = .621371 * kphGoalSpeed
+                mphGoalSpeed = Math.round(mphConversion);
+                $(".replayBar .ball.speed .value").text(mphGoalSpeed + " MPH");
+
+                //Check if an assist was recorded to properly display titles, names, icons
+                if(d['assister']['name'].length > 0) {
+                    $(".replayBar .assister .name").text(d['assister']['name']);
+                    $(".replayBar .assister .title").text('Assister');
+                    $(".replayBar .assister .icon .img").attr("src", "../assets/assist_icon.png").attr("width", "50px");
+                } else {
+                    $(".replayBar .assister .name").text('');
+                    $(".replayBar .assister .title").text('');
+                    $(".replayBar .assister .icon .img").attr("src", "../assets/ford_logo.png").attr("width", "130px");
+                }
+            })
+            WsSubscribers.subscribe("game", "update_state", (d) => {
+                //Show or Hide replay bar depending on game state
+                    if(!d['game']['isReplay']) {
+                        $(".replayBar").fadeTo(0,0.0)
+                    }
+                    else {
+                        $(".replayBar").fadeTo(0,1.0)
+                    }                 
+                });
+        </script>
+    </body>
+</html>
