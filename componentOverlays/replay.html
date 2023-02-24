@@ -76,7 +76,7 @@
                 mphGoalSpeed = Math.round(mphConversion);
                 $(".replayBar .ball.speed .value").text(mphGoalSpeed + " MPH");
 
-                //Check if an assist was recorded to properly display title and name
+                //Check if an assist was recorded to properly display titles, names, icons
                 if(d['assister']['name'].length > 0) {
                     $(".replayBar .assister .name").text(d['assister']['name']);
                     $(".replayBar .assister .title").text('Assister');
@@ -88,7 +88,7 @@
                 }
             })
             WsSubscribers.subscribe("game", "update_state", (d) => {
-                //Show or Hide boost on target state
+                //Show or Hide replay bar depending on game state
                     if(!d['game']['isReplay']) {
                         $(".replayBar").fadeTo(0,0.0)
                     }
