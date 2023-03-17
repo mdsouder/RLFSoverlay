@@ -1,60 +1,111 @@
 <html>
     <head>
         <style>
-            td, th {
-                text-align: center;
-                padding: 10px;
-                font-size: 25px;
-            }
-            .teamLeftStats {
+            .leftEventIcon {
                 position: absolute;
-                width: 225px;
+                left: 180px;
+                top: 5px;
+            }
+            .rightEventIcon {
+                position: absolute;
+                left: 10px;
+                top: 5px;
+            }
+            .teamLeft {
+                position: absolute;
                 color: white;
-                font-family: Arial, Helvetica, sans-serif;
-                background-color: blue;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                font-size: 25px;
+                width: 100%;
             }
-            .teamRightStats {
+            .teamRight {
                 position: absolute;
-                width: 225px;
-                left: 1695px;
-                color: black;
-                font-family: Arial, Helvetica, sans-serif;
-                background-color: orange;
+                color: white;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                font-size: 25px;
+                width: 100%;
+                left: 1680px;
+            }
+            .playerOne {
+                position: absolute;
+                top: 20px;
+            }
+            .playerTwo {
+                position: absolute;
+                top: 80px;
+            }
+            .playerThree {
+                position: absolute;
+                top: 140px;
+            }
+            .leftName {
+                position: absolute;
+                text-indent: 10px;
+                top: 10px;
+            }
+            .rightName {
+                position: absolute;
+                top: 10px;
+                width: 230px;
+                text-align: right;
+            }
+            .leftBoostBar {
+                position: absolute;
+                width: 200px;
+                height: 5px;
+                background-color: white;
+            }
+            .rightBoostBar {
+                position: absolute;
+                width: 200px;
+                height: 5px;
+                background-color: white;
+                left: 240px;
+                transform: rotateY(180deg);
+                transform-origin: 0% 0%;
             }
         </style>
     </head>
     <body>
-        <div class="teamLeftStats">
-            <table class="roster">
-                <tr class="player one">
-                    <th class="name"></th>
-                    <td class="boost">0</td>
-                </tr>
-                <tr class="player two">
-                    <th class="name"></th>
-                    <td class="boost">0</td>
-                </tr>
-                <tr class="player three">
-                    <th class="name"></th>
-                    <td class="boost">0</td>
-                </tr>
-            </table>
+        <div class="teamLeft">
+            <div class="playerOne">
+                <div class="leftEventIcon"><img class="img" src="../icons/blankPixel.png" width="40px" height="40px"></div>
+                <img src="../backgrounds/playerBarsCutCorners.png">
+                <div class="leftName"></div>
+                <div class="leftBoostBar"></div>
+            </div>
+            <div class="playerTwo">
+                <div class="leftEventIcon"><img class="img" src="../icons/blankPixel.png" width="40px" height="40px"></div>
+                <img src="../backgrounds/playerBarsCutCorners.png">
+                <div class="leftName"></div>
+                <div class="leftBoostBar"></div>
+            </div>
+            <div class="playerThree">
+                <div class="leftEventIcon"><img class="img" src="../icons/blankPixel.png" width="40px" height="40px"></div>
+                <img src="../backgrounds/playerBarsCutCorners.png">
+                <div class="leftName"></div>
+                <div class="leftBoostBar"></div>
+            </div>
         </div>
-        <div class="teamRightStats">
-            <table class="roster">
-                <tr class="player one">
-                    <th class="name"></th>
-                    <td class="boost">0</td>
-                </tr>
-                <tr class="player two">
-                    <th class="name"></th>
-                    <td class="boost">0</td>
-                </tr>
-                <tr class="player three">
-                    <th class="name"></th>
-                    <td class="boost">0</td>
-                </tr>
-            </table>
+        <div class="teamRight">
+            <div class="playerOne">
+                <div class="rightEventIcon"><img class="img" src="../icons/blankPixel.png" width="40px" height="40px"></div>
+                <img src="../backgrounds/playerBarsCutCornersInverted.png">
+                <div class="rightName"></div>
+                <div class="rightBoostBar"></div>
+            </div>
+            <div class="playerTwo">
+                <div class="rightEventIcon"><img class="img" src="../icons/blankPixel.png" width="40px" height="40px"></div>
+                <img src="../backgrounds/playerBarsCutCornersInverted.png">
+                <div class="rightName"></div>
+                <div class="rightBoostBar"></div>
+            </div>
+            <div class="playerThree">
+                <div class="rightEventIcon"><img class="img" src="../icons/blankPixel.png" width="40px" height="40px"></div>
+                <img src="../backgrounds/playerBarsCutCornersInverted.png">
+                <div class="rightName"></div>
+                <div class="rightBoostBar"></div>
+            </div>
         </div>
         <script src="https://code.jquery.com/jquery-latest.min.js"></script>
         <script src="../javascript/webSocket.js"></script>
@@ -72,20 +123,56 @@
                             rightTeamRoster.push(player)
                     };             
 
-                    $(".teamLeftStats .player.one .name").text(d['players'][leftTeamRoster[0]]['name'])
-                    $(".teamLeftStats .player.one .boost").text(d['players'][leftTeamRoster[0]]['boost'])
-                    $(".teamLeftStats .player.two .name").text(d['players'][leftTeamRoster[1]]['name'])
-                    $(".teamLeftStats .player.two .boost").text(d['players'][leftTeamRoster[1]]['boost'])
-                    $(".teamLeftStats .player.three .name").text(d['players'][leftTeamRoster[2]]['name'])
-                    $(".teamLeftStats .player.three .boost").text(d['players'][leftTeamRoster[2]]['boost'])
+                    $(".teamLeft .playerOne .leftName").text(d['players'][leftTeamRoster[0]]['name'])
+                    $(".teamLeft .playerOne .leftBoostBar").width(200*(d['players'][leftTeamRoster[0]]['boost']/100))
+                    $(".teamLeft .playerTwo .leftName").text(d['players'][leftTeamRoster[1]]['name'])
+                    $(".teamLeft .playerTwo .leftBoostBar").width(200*(d['players'][leftTeamRoster[1]]['boost']/100))
+                    $(".teamLeft .playerThree .leftName").text(d['players'][leftTeamRoster[2]]['name'])
+                    $(".teamLeft .playerThree .leftBoostBar").width(200*(d['players'][leftTeamRoster[2]]['boost']/100))
 
-                    $(".teamRightStats .player.one .name").text(d['players'][rightTeamRoster[0]]['name'])
-                    $(".teamRightStats .player.one .boost").text(d['players'][rightTeamRoster[0]]['boost'])
-                    $(".teamRightStats .player.two .name").text(d['players'][rightTeamRoster[1]]['name'])
-                    $(".teamRightStats .player.two .boost").text(d['players'][rightTeamRoster[1]]['boost'])
-                    $(".teamRightStats .player.three .name").text(d['players'][rightTeamRoster[2]]['name'])
-                    $(".teamRightStats .player.three .boost").text(d['players'][rightTeamRoster[2]]['boost'])
+                    $(".teamRight .playerOne .rightName").text(d['players'][rightTeamRoster[0]]['name'])
+                    $(".teamRight .playerOne .rightBoostBar").width(200*(d['players'][rightTeamRoster[0]]['boost']/100))
+                    $(".teamRight .playerTwo .rightName").text(d['players'][rightTeamRoster[1]]['name'])
+                    $(".teamRight .playerTwo .rightBoostBar").width(200*(d['players'][rightTeamRoster[1]]['boost']/100))
+                    $(".teamRight .playerThree .rightName").text(d['players'][rightTeamRoster[2]]['name'])
+                    $(".teamRight .playerThree .rightBoostBar").width(200*(d['players'][rightTeamRoster[2]]['boost']/100))
                 });
+
+            const eventsToIcons = { Shot: "../icons/shot_on_goal_icon.png",
+                                    Goal: "../icons/goal_icon.png",
+                                    Save: "../icons/save_icon.png",
+                                    Assist: "../icons/assist_icon.png" 
+                                }
+            WsSubscribers.subscribe("game", "statfeed_event", (d) => {
+                if (d['event_name'] in eventsToIcons) {
+                    switch (d['main_target']['id']) {
+                        case (leftTeamRoster[0]):
+                            $(".teamLeft .playerOne .leftEventIcon .img").attr("src", eventsToIcons[d['event_name']]).attr("width", "40px").attr("height", "40px");
+                            setTimeout(function() { $(".teamLeft .playerOne .leftEventIcon .img").attr("src", "../icons/blankPixel.png") }, 7000);
+                            break;
+                        case (leftTeamRoster[1]):
+                            $(".teamLeft .playerTwo .leftEventIcon .img").attr("src", eventsToIcons[d['event_name']]).attr("width", "40px").attr("height", "40px");
+                            setTimeout(function() { $(".teamLeft .playerTwo .leftEventIcon .img").attr("src", "../icons/blankPixel.png") }, 7000);
+                            break;
+                        case (leftTeamRoster[2]):
+                            $(".teamLeft .playerThree .leftEventIcon .img").attr("src", eventsToIcons[d['event_name']]).attr("width", "40px").attr("height", "40px");
+                            setTimeout(function() { $(".teamLeft .playerThree .leftEventIcon .img").attr("src", "../icons/blankPixel.png") }, 7000);
+                            break;
+                        case (rightTeamRoster[0]):
+                            $(".teamRight .playerOne .rightEventIcon .img").attr("src", eventsToIcons[d['event_name']]).attr("width", "40px").attr("height", "40px");
+                            setTimeout(function() { $(".teamRight .playerOne .rightEventIcon .img").attr("src", "../icons/blankPixel.png") }, 7000);
+                            break;
+                        case (rightTeamRoster[1]):
+                            $(".teamRight .playerTwo .rightEventIcon .img").attr("src", eventsToIcons[d['event_name']]).attr("width", "40px").attr("height", "40px");
+                            setTimeout(function() { $(".teamRight .playerTwo .rightEventIcon .img").attr("src", "../icons/blankPixel.png") }, 7000);
+                            break;
+                        case (rightTeamRoster[2]):
+                            $(".teamRight .playerThree .rightEventIcon .img").attr("src", eventsToIcons[d['event_name']]).attr("width", "40px").attr("height", "40px");
+                            setTimeout(function() { $(".teamRight .playerThree .rightEventIcon .img").attr("src", "../icons/blankPixel.png") }, 7000);
+                            break;
+                    }
+                }
+            });
         </script>
     </body>
 </html>

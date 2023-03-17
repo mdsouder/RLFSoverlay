@@ -30,7 +30,7 @@
                         <table>
                             <tr class="scorer">
                                 <th class="title">Scorer</th>
-                                <td class="icon"><img src="../assets/goal_icon.png" width="50px" height="50px"></td>
+                                <td class="icon"><img src="../icons/goal_icon.png" width="50px" height="50px"></td>
                             </tr>
                             <tr class="scorer">
                                 <td class="name"></td>
@@ -41,7 +41,7 @@
                         <table>
                             <tr class="assister">
                                 <th class="title">Assister</th>
-                                <td class="icon"><img class="img" src="../assets/assist_icon.png" width="50px" height="50px"></td>
+                                <td class="icon"><img class="img" src="../icons/assist_icon.png" width="50px" height="50px"></td>
                             </tr>
                             <tr class="assister">
                                 <td class="name"></td>
@@ -52,7 +52,7 @@
                         <table>
                             <tr class="ball speed">
                                 <th class="title">Ball Speed</th>
-                                <td class="icon"><img src="../assets/shot_on_goal_icon.png" width="50px" height="50px"></td>
+                                <td class="icon"><img src="../icons/shot_on_goal_icon.png" width="50px" height="50px"></td>
                             </tr>
                             <tr class="ball speed">
                                 <td class="value">0</td>
@@ -80,11 +80,11 @@
                 if(d['assister']['name'].length > 0) {
                     $(".replayBar .assister .name").text(d['assister']['name']);
                     $(".replayBar .assister .title").text('Assister');
-                    $(".replayBar .assister .icon .img").attr("src", "../assets/assist_icon.png").attr("width", "50px");
+                    $(".replayBar .assister .icon .img").attr("src", "../icons/assist_icon.png").attr("width", "50px");
                 } else {
                     $(".replayBar .assister .name").text('');
                     $(".replayBar .assister .title").text('');
-                    $(".replayBar .assister .icon .img").attr("src", "../assets/ford_logo.png").attr("width", "130px");
+                    $(".replayBar .assister .icon .img").attr("src", "../icons/ford_logo.png").attr("width", "130px");
                 }
             })
             WsSubscribers.subscribe("game", "update_state", (d) => {
