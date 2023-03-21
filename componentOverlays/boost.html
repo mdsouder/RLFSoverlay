@@ -31,11 +31,13 @@
         </style>
     </head>
     <body>
-        <div class="boostBarBackground">
-            <img src="../backgrounds/boostBarBackground.png">
+        <div class="completeBoostBar">
+            <div class="boostBarBackground">
+                <img src="../backgrounds/boostBarBackground.png">
+            </div>
+            <div class="boostBar"></div>
+            <div class="boostBarValue">0</div>
         </div>
-        <div class="boostBar"></div>
-        <div class="boostBarValue">0</div>
         <script src="https://code.jquery.com/jquery-latest.min.js"></script>
         <script src="../javascript/webSocket.js"></script>
         <script>
@@ -51,12 +53,10 @@
                 
                 //Show or Hide boost on target state
                     if(!d['game']['hasTarget']) {
-                        $(".boostBar").fadeTo(0,0.0)
-                        $(".boostBarBackground").fadeTo(0,0.0)
+                        $(".completeBoostBar").fadeTo(0,0.0)
                     }
                     else {
-                        $(".boostBar").fadeTo(0,1.0)
-                        $(".boostBarBackground").fadeTo(0,1.0)
+                        $(".completeBoostBar").fadeTo(0,1.0)
                     }
 
                 //Change bar size and number
