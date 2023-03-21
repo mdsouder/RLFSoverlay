@@ -3,34 +3,39 @@
         <style>
             .boostBar {
                 position: absolute;
-                left: 1400px;
-                top: 950px;
-                width: 500px;
-                height: 50px;
-                background-color: yellow;
-                font-size: 45px;
-                font-family: Arial, Helvetica, sans-serif;
-                text-align: left;
-                text-indent: 10px;
+                left: 1845px;
+                top: 1080px;
+                width: 75px;
+                height: 500px;
+                background-color: white;
+                transform: rotateX(180deg);
+                transform-origin: 0% 0%;
+            }
+            .boostBarValue {
+                position: absolute;
+                left: 1770px;
+                top: 1000px;
+                font-size: 40px;
+                width: 75px;
+                color: white;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                text-align: center;
             }
             .boostBarBackground {
                 position: absolute;
-                left: 1400px;
-                top: 950px;
+                left: 1770px;
+                top: 580px;
                 width: 500px;
                 height: 50px;
-                background-color: red;
-                font-size: 45px;
-                font-family: Arial, Helvetica, sans-serif;
-                text-align: left;
             }
         </style>
     </head>
     <body>
-        <div class="boostBarBackground"></div>
-        <div class="boostBar">
-            0
+        <div class="boostBarBackground">
+            <img src="../backgrounds/boostBarBackground.png">
         </div>
+        <div class="boostBar"></div>
+        <div class="boostBarValue">0</div>
         <script src="https://code.jquery.com/jquery-latest.min.js"></script>
         <script src="../javascript/webSocket.js"></script>
         <script>
@@ -55,9 +60,13 @@
                     }
 
                 //Change bar size and number
-                    if (currentPlayer[0] != null) {                     
-                        $(".boostBar").text(d['players'][currentPlayer[0]]['boost'])
-                        $(".boostBar").width(500*(d['players'][currentPlayer[0]]['boost']/100))
+                    if (currentPlayer[0] != null) {
+                        boostValue = d['players'][currentPlayer[0]]['boost']
+                        if (boostValue < 10) {
+                            boostValue = '0' + boostValue
+                        }                   
+                        $(".boostBarValue").text(boostValue)
+                        $(".boostBar").height(500*(d['players'][currentPlayer[0]]['boost']/100))
                     }                    
                 });
         </script>
