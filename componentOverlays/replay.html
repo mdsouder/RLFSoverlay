@@ -79,7 +79,7 @@
 
                 //Check if an assist was recorded to properly display titles, names, icons
                 if(d['assister']['name'].length > 0) {
-                    $(".replayBar .assister .value").text(d['assister']['value']);
+                    $(".replayBar .assister .value").text(d['assister']['name']);
                     $(".replayBar .assister .icon .img").attr("src", "../icons/assist_icon.png").attr("width", "60px").attr("height", "60px");
                 } else {
                     $(".replayBar .assister .value").text('REPLAY');
