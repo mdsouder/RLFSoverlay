@@ -3,64 +3,65 @@
         <style>
             .replayBar {
                 position: absolute;
-                left: 0px;
                 top: 950px;
-                width: 1920px;
-                height: 100px;
-                background-color: purple;
-                font-size: 400px;
-                font-family: Arial, Helvetica, sans-serif;
-                text-align: left;
-                text-indent: 10px;
+                width: 100%;
+                height: 100%;
             }
-            table {
-                margin-left: 250px;
+            .scorer {
+                position: absolute;
+                left:350px;
+                width: 450px;
+                color: white;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                display: inline;
+                font-size: 40px;
+                top: 40px;
             }
-            th,td {
-                font-size: 20px;
-                text-emphasis-color: white;
+            .assister {
+                position: absolute;
+                left: 800px;
+                width: 500px;
+                color: white;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                display: inline;
+                font-size: 40px;
+                top: 40px;
+            }
+            .ballSpeed {
+                position: absolute;
+                left: 1300px;
+                width: 450px;
+                color: white;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                display: inline;
+                font-size: 40px;
+                top: 40px;
+            }
+            .icon {
+                position: absolute;
+            }
+            .value {
+                position: absolute;
+                left: 75px;
+                top: 5px;
             }
         </style>
     </head>
     <body>
         <div class="replayBar">
-            <table class="alignment">
-                <tr>
-                    <td valign="top">
-                        <table>
-                            <tr class="scorer">
-                                <th class="title">Scorer</th>
-                                <td class="icon"><img src="../icons/goal_icon.png" width="50px" height="50px"></td>
-                            </tr>
-                            <tr class="scorer">
-                                <td class="name"></td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td valign="top">
-                        <table>
-                            <tr class="assister">
-                                <th class="title">Assister</th>
-                                <td class="icon"><img class="img" src="../icons/assist_icon.png" width="50px" height="50px"></td>
-                            </tr>
-                            <tr class="assister">
-                                <td class="name"></td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td valign="top">
-                        <table>
-                            <tr class="ball speed">
-                                <th class="title">Ball Speed</th>
-                                <td class="icon"><img src="../icons/shot_on_goal_icon.png" width="50px" height="50px"></td>
-                            </tr>
-                            <tr class="ball speed">
-                                <td class="value">0</td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
+                <img src="../backgrounds/replayBarBackground.png">
+                <div class="scorer">
+                    <div class="icon"><img src="../icons/goal_icon.png" width="60px" height="60px"></div>
+                    <div class="value">Scorer</div>
+                </div>
+                <div class="assister">
+                    <div class="icon"><img class="img" src="../icons/assist_icon.png" width="60px" height="60px"></div>
+                    <div class="value">Assister</div>
+                </div>
+                <div class="ballSpeed">
+                    <div class="icon"><img src="../icons/shot_on_goal_icon.png" width="60px" height="60px"></div>
+                    <div class="value">00 MPH</div>
+                </div>
         </div>
         <script src="https://code.jquery.com/jquery-latest.min.js"></script>
         <script src="../javascript/webSocket.js"></script>
@@ -68,23 +69,21 @@
             //WsSubscribers from webSocket.js
             WsSubscribers.init(49322, true);
             WsSubscribers.subscribe("game", "goal_scored", (d) => {
-                $(".replayBar .scorer .name").text(d['scorer']['name']);
+                $(".replayBar .scorer .value").text(d['scorer']['name']);
 
                 //Game returns all goal speed values in KPH
                 kphGoalSpeed = d['goalspeed']
                 mphConversion = .621371 * kphGoalSpeed
                 mphGoalSpeed = Math.round(mphConversion);
-                $(".replayBar .ball.speed .value").text(mphGoalSpeed + " MPH");
+                $(".replayBar .ballSpeed .value").text(mphGoalSpeed + " MPH");
 
                 //Check if an assist was recorded to properly display titles, names, icons
                 if(d['assister']['name'].length > 0) {
-                    $(".replayBar .assister .name").text(d['assister']['name']);
-                    $(".replayBar .assister .title").text('Assister');
-                    $(".replayBar .assister .icon .img").attr("src", "../icons/assist_icon.png").attr("width", "50px");
+                    $(".replayBar .assister .value").text(d['assister']['value']);
+                    $(".replayBar .assister .icon .img").attr("src", "../icons/assist_icon.png").attr("width", "60px").attr("height", "60px");
                 } else {
-                    $(".replayBar .assister .name").text('');
-                    $(".replayBar .assister .title").text('');
-                    $(".replayBar .assister .icon .img").attr("src", "../icons/ford_logo.png").attr("width", "130px");
+                    $(".replayBar .assister .value").text('REPLAY');
+                    $(".replayBar .assister .icon .img").attr("src", "../icons/blankPixel.png");
                 }
             })
             WsSubscribers.subscribe("game", "update_state", (d) => {
