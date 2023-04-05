@@ -9,6 +9,4 @@ How to set up and use RLFS Overlay
   
 3) Nodejs -> https://nodejs.org/en
 
-4) OBS -> https://obsproject.com/
-
 5) Clone this Repository
