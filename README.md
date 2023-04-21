@@ -53,8 +53,16 @@ How to set up and use RLFS Overlay (README is a Work in Progress)
 
 6) It is recommended to group all the overlay components in a single folder within sources to easily minimize the browsers or hide the overlay on stream.
 
-7) You should still have Rocket League running and the SOS Relay Master running. Start a private match with 3v3 Bots and spectate. The overlay should start to display all game data and events in real time. If nothing is happening, select each individual broswer source and click ```Refresh``` below the preview, or ```Refresh cache of the current page``` in the source properties. 
+7) You should still have Rocket League running and the SOS Relay Master running. Start a private match with 3v3 Bots and spectate. The overlay should start to display all game data and events in real time. If nothing is happening, select each individual broswer source and click ```Refresh``` below the stream preview, or ```Refresh cache of the current page``` in the source properties. 
 
 8) You have now set up the RLFS Overlay!
 
-# To Start Up Overlay Again
+# How To Start Up Overlay
+
+1) Launch BakkesMod Application.
+
+2) Open Command Prompt. Navigate to the ```sos-ws-relay-master``` folder inside this project's directory. Enter the command ```node ws-relay.js``` and run. Skip each prompt until it is trying to connect.
+
+3) Launch Rocket League. Join Private Match and Spectate.
+
+4) Open OBS and navigate to RLFS Scene. Refresh components as necessary.
