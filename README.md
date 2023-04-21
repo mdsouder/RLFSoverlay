@@ -66,3 +66,11 @@ How to set up and use RLFS Overlay
 3) Launch Rocket League. Join Private Match and Spectate.
 
 4) Open OBS and navigate to RLFS Scene. Refresh components as necessary.
+
+# End Credits
+
+Here are a few additional sources for any help in setting up different requirements for this overlay.
+   * BakkesMod -> https://www.youtube.com/watch?v=X290anUi9qE
+   * SOS Plugin -> https://www.youtube.com/watch?v=QE816DBuwI4
+
+Developed and Maintained by Matthew Souder. Open to any inquires.
