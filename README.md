@@ -1,5 +1,5 @@
 # RLFSoverlay
-How to set up and use RLFS Overlay (README is a Work in Progress)
+How to set up and use RLFS Overlay
 
 # First Time Setup
 
