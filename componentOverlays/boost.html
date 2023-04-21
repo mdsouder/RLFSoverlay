@@ -52,7 +52,7 @@
                     };             
                 
                 //Show or Hide boost on target state
-                    if(!d['game']['hasTarget']) {
+                    if(!d['game']['hasTarget'] || d['game']['isReplay']) {
                         $(".completeBoostBar").fadeTo(0,0.0)
                     }
                     else {
