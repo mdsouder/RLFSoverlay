@@ -1,6 +1,9 @@
 # RLFSoverlay
 How to set up and use RLFS Overlay
 
+**Current Version: 1.2 - April 21, 2023**
+* View wiki for versions and changelogs -> https://github.com/mdsouder/RLFSoverlay/wiki
+
 # First Time Setup
 
 ### Setting up BakkesMod and SOS Plugin
