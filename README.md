@@ -1,9 +1,9 @@
 # RLFSoverlay
 How to set up and use RLFS Overlay (README is a Work in Progress)
 
-# First Time Setup (Windows)
+# First Time Setup
 
-**Setting up BakkesMod and SOS Plugin**
+### Setting up BakkesMod and SOS Plugin
 
 1) Download BakkesMod for Rocket League from the provided link. You should now have a ZIP called ```BakkedModSetup.zip```.
     * https://bakkesmod.com/download.php
@@ -22,7 +22,7 @@ How to set up and use RLFS Overlay (README is a Work in Progress)
 
 8) The last step is to activate the SOS Plugin. Open the BakkesMod developer console. This may be accessed from hitting F6, if that does not work try the ~ key. Enter the command ```plugin load sos``` and run. This should now allow SOS to properly run when being accessed.
 
-**Setting up SOS Relay Master**
+### Setting up SOS Relay Master
 
 1) First download the ZIP of this project, or as recommended to clone this repository. Save this project in an easy to reach directory for future use.
 
@@ -36,4 +36,25 @@ How to set up and use RLFS Overlay (README is a Work in Progress)
 
 6) To successfully connect and start receving game state messages, first open Rocket League again. Once Rocket League has launched, you should see a success message that Rocket League has connected on the given port. To see messages being output, start a private match with bots. 3v3 is recommended as the Rosters portion of the layout handles that many players. Once you hit the team select screen, the command window should start to log messages that are being received from the game. To see more types of messages, start spectating and you can observe the different types of messages.
 
-**Setting up RLFS Overlay in OBS**
+### Setting up RLFS Overlay in OBS
+
+**As a note, some steps will be marked as necessary to use the overlay, and other steps will be recommendations to organize the scene.**
+
+1) Download OBS from the provided link. It is recommended to download the latest version. Once downloaded, run the installer and follow the steps to install OBS.
+    * https://obsproject.com/download
+
+2) Launch OBS. If it is the first time with OBS, you will need to create a new scene, otherwise it is recommended to do so.
+
+3) Within the new scene, you will need to add a new source. This may either be a Game Capture or Display Capture to get the Rocket League gameplay.
+
+4) To add the Overlay, we will need to create Five Browser sources. It will be necessary that in the properties of these Browser sources, the ```local file``` checkbox must be selected, the width set to 1920, and the height set to 1080. These Browser sources should be above the Rocket League Capture Source in OBS.
+
+5) Still within Browser source properties, we should have ```local file``` box checked. Click ```Browse``` on the right side to start to find our overlay components. In the file explorer, navigate to this projects directory and open the folder ```componentOverlays```. Select one of the files for the Browser source. It is recommended to name the Browser source as the name of the component you selected for it. Repeat this for each Browser source/overlay file.
+
+6) It is recommended to group all the overlay components in a single folder within sources to easily minimize the browsers or hide the overlay on stream.
+
+7) You should still have Rocket League running and the SOS Relay Master running. Start a private match with 3v3 Bots and spectate. The overlay should start to display all game data and events in real time. If nothing is happening, select each individual broswer source and click ```Refresh``` below the preview, or ```Refresh cache of the current page``` in the source properties. 
+
+8) You have now set up the RLFS Overlay!
+
+# To Start Up Overlay Again
