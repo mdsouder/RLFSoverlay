@@ -1,0 +1,208 @@
+<html>
+    <head>
+        <style>
+            .playerStats {
+                position: absolute;
+                width: 100%;
+                top: 1000px;
+                color: white;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                display: inline;
+            }
+            .playerStatsBorder {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 995px;
+            }
+            .name {
+                position: absolute;
+                font-size: 40px;
+                text-indent: 10px;
+                top: 20px;
+            }
+            .score {
+                position: absolute;
+                font-size: 20px;
+                text-indent: 260px;
+                top: 40px;
+            }
+            .goals {
+                position: absolute;
+                font-size: 20px;
+                text-indent: 380px;
+                top: 40px;
+            }
+            .shots {
+                position: absolute;
+                font-size: 20px;
+                text-indent: 480px;
+                top: 40px;
+            }
+            .assists {
+                position: absolute;
+                font-size: 20px;
+                text-indent: 580px;
+                top: 40px;
+            }
+            .saves {
+                position: absolute;
+                font-size: 20px;
+                text-indent: 690px;
+                top: 40px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="completeTeamStats">
+            <div class="teamStatsBackground">
+                <img src="../backgrounds/playerStatsBarWhiteBorder.png">
+            </div>
+            <div class="teamInformation">
+                <div class="teamLeft">
+                    <div class="name"></div>
+                    <div class="score"></div>
+                    <div class="colorBar"></div>
+                </div>
+                <div class="teamRight">
+                    <div class="name"></div>
+                    <div class="score"></div>
+                    <div class="colorBar"></div>
+                </div>
+            </div>
+            <table class="teamLeftTable">
+                <tr class="name">
+                    <td class="playerOne"></td>
+                    <td class="playerTwo"></td>
+                    <td class="playerThree"></td>
+                </tr>
+                <tr class="score">
+                    <td class="playerOne"></td>
+                    <td class="playerTwo"></td>
+                    <td class="playerThree"></td>
+                </tr>
+                <tr class="goals">
+                    <td class="playerOne"></td>
+                    <td class="playerTwo"></td>
+                    <td class="playerThree"></td>
+                </tr>
+                <tr class="shots">
+                    <td class="playerOne"></td>
+                    <td class="playerTwo"></td>
+                    <td class="playerThree"></td>
+                </tr>
+                <tr class="assists">
+                    <td class="playerOne"></td>
+                    <td class="playerTwo"></td>
+                    <td class="playerThree"></td>
+                </tr>
+                <tr class="saves">
+                    <td class="playerOne"></td>
+                    <td class="playerTwo"></td>
+                    <td class="playerThree"></td>
+                </tr>
+            </table>
+            <table class="teamRightTable">
+                <tr class="name">
+                    <td class="playerOne"></td>
+                    <td class="playerTwo"></td>
+                    <td class="playerThree"></td>
+                </tr>
+                <tr class="score">
+                    <td class="playerOne"></td>
+                    <td class="playerTwo"></td>
+                    <td class="playerThree"></td>
+                </tr>
+                <tr class="goals">
+                    <td class="playerOne"></td>
+                    <td class="playerTwo"></td>
+                    <td class="playerThree"></td>
+                </tr>
+                <tr class="shots">
+                    <td class="playerOne"></td>
+                    <td class="playerTwo"></td>
+                    <td class="playerThree"></td>
+                </tr>
+                <tr class="assists">
+                    <td class="playerOne"></td>
+                    <td class="playerTwo"></td>
+                    <td class="playerThree"></td>
+                </tr>
+                <tr class="saves">
+                    <td class="playerOne"></td>
+                    <td class="playerTwo"></td>
+                    <td class="playerThree"></td>
+                </tr>
+            </table>
+        </div>
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="../javascript/webSocket.js"></script>
+        <script>
+            //WsSubscribers from webSocket.js
+            WsSubscribers.init(49322, true);
+            WsSubscribers.subscribe("game", "update_state", (d) => { 
+                //Rosters
+                    leftTeamRoster = []
+                    rightTeamRoster = []
+                    for (let player in d.players ) {
+                        if(d.players[player].team == 0)
+                            leftTeamRoster.push(player)
+                        else
+                            rightTeamRoster.push(player)
+                    };
+
+                    $(".teamInformation .teamLeft .name").text(d['game']['teams'][0]['name']);
+                    $(".teamInformation .teamRight .name").text(d['game']['teams'][1]['name']);
+                    
+                    $(".teamInformation .teamLeft .score").text(d['game']['teams'][0]['score']);
+                    $(".teamInformation .teamRight .score").text(d['game']['teams'][1]['score']);
+
+                    $(".teamInformation .teamLeft .colorBar").css("background-color", d['game']['teams'][0]['color_primary']);
+                    $(".teamInformation .teamRight .colorBar").css("background-color", d['game']['teams'][1]['color_primary']);
+                
+
+                    $(".teamLeftTable .name .playerOne").text(d['players'][leftTeamRoster[0]]['name'])
+                    $(".teamLeftTable .score .playerOne").text(d['players'][leftTeamRoster[0]]['score'])
+                    $(".teamLeftTable .goals .playerOne").text(d['players'][leftTeamRoster[0]]['goals'])
+                    $(".teamLeftTable .shots .playerOne").text(d['players'][leftTeamRoster[0]]['shots'])
+                    $(".teamLeftTable .assists .playerOne").text(d['players'][leftTeamRoster[0]]['assists'])
+                    $(".teamLeftTable .saves .playerOne").text(d['players'][leftTeamRoster[0]]['saves'])
+
+                    $(".teamLeftTable .name .playerTwo").text(d['players'][leftTeamRoster[1]]['name'])
+                    $(".teamLeftTable .score .playerTwo").text(d['players'][leftTeamRoster[1]]['score'])
+                    $(".teamLeftTable .goals .playerTwo").text(d['players'][leftTeamRoster[1]]['goals'])
+                    $(".teamLeftTable .shots .playerTwo").text(d['players'][leftTeamRoster[1]]['shots'])
+                    $(".teamLeftTable .assists .playerTwo").text(d['players'][leftTeamRoster[1]]['assists'])
+                    $(".teamLeftTable .saves .playerTwo").text(d['players'][leftTeamRoster[1]]['saves'])
+
+                    $(".teamLeftTable .name .playerThree").text(d['players'][leftTeamRoster[2]]['name'])
+                    $(".teamLeftTable .score .playerThree").text(d['players'][leftTeamRoster[2]]['score'])
+                    $(".teamLeftTable .goals .playerThree").text(d['players'][leftTeamRoster[2]]['goals'])
+                    $(".teamLeftTable .shots .playerThree").text(d['players'][leftTeamRoster[2]]['shots'])
+                    $(".teamLeftTable .assists .playerThree").text(d['players'][leftTeamRoster[2]]['assists'])
+                    $(".teamLeftTable .saves .playerThree").text(d['players'][leftTeamRoster[2]]['saves'])
+
+                    $(".teamRightTable .name .playerOne").text(d['players'][rightTeamRoster[0]]['name'])
+                    $(".teamRightTable .score .playerOne").text(d['players'][rightTeamRoster[0]]['score'])
+                    $(".teamRightTable .goals .playerOne").text(d['players'][rightTeamRoster[0]]['goals'])
+                    $(".teamRightTable .shots .playerOne").text(d['players'][rightTeamRoster[0]]['shots'])
+                    $(".teamRightTable .assists .playerOne").text(d['players'][rightTeamRoster[0]]['assists'])
+                    $(".teamRightTable .saves .playerOne").text(d['players'][rightTeamRoster[0]]['saves'])
+
+                    $(".teamRightTable .name .playerTwo").text(d['players'][rightTeamRoster[1]]['name'])
+                    $(".teamRightTable .score .playerTwo").text(d['players'][rightTeamRoster[1]]['score'])
+                    $(".teamRightTable .goals .playerTwo").text(d['players'][rightTeamRoster[1]]['goals'])
+                    $(".teamRightTable .shots .playerTwo").text(d['players'][rightTeamRoster[1]]['shots'])
+                    $(".teamRightTable .assists .playerTwo").text(d['players'][rightTeamRoster[1]]['assists'])
+                    $(".teamRightTable .saves .playerTwo").text(d['players'][rightTeamRoster[1]]['saves'])
+
+                    $(".teamRightTable .name .playerThree").text(d['players'][rightTeamRoster[2]]['name'])
+                    $(".teamRightTable .score .playerThree").text(d['players'][rightTeamRoster[2]]['score'])
+                    $(".teamRightTable .goals .playerThree").text(d['players'][rightTeamRoster[2]]['goals'])
+                    $(".teamRightTable .shots .playerThree").text(d['players'][rightTeamRoster[2]]['shots'])
+                    $(".teamRightTable .assists .playerThree").text(d['players'][rightTeamRoster[2]]['assists'])
+                    $(".teamRightTable .saves .playerThree").text(d['players'][rightTeamRoster[2]]['saves'])                   
+                });
+        </script>
+    </body>
+</html>
