@@ -1,0 +1,347 @@
+<html>
+    <head>
+        <style>
+            td {
+                width: 274px;
+                height: 110px;
+                text-align: center;
+            }
+            tr {
+                border-bottom: 1px solid white;
+            }
+            .demos, .name {
+                border-bottom: none;
+            }
+            .teamLeftTable {
+                position: absolute;
+                top: 175px;
+                color: White;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                font-size: 30px;
+                border-collapse: collapse; 
+            }
+            .titlesTable {
+                position: absolute;
+                top: 175px;
+                left: 822px;
+                color: White;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                font-size: 30px;
+                border-collapse: collapse; 
+            }
+            .teamRightTable {
+                position: absolute;
+                top: 175px;
+                left: 1096px;
+                color: White;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                font-size: 30px;
+                border-collapse: collapse; 
+            }
+            .teamLeft {
+                position: absolute;
+                width: 100%;
+                left: 360px;
+            }
+            .teamRight {
+                position: absolute;
+                width: 100%;
+                left: 1160px;
+            }
+            .teamLeft .name {
+                position: absolute;
+                width: 400px;
+                top: 20px;
+                left: 10px;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                text-align: left;
+                color: #081534;
+                font-size: 40px;
+            }
+            .teamRight .name {
+                position: absolute;
+                width: 390px;
+                top: 20px;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                text-align: right;
+                color: #081534;
+                font-size: 40px;
+            }
+            .teamLeft .score {
+                position: absolute;
+                top: 10px;
+                left: 340px;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                color: #081534;
+                font-size: 60px;
+            }
+            .teamRight .score {
+                position: absolute;
+                top: 10px;
+                left: 30px;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                color: #081534;
+                font-size: 60px;
+            }
+            .teamLeft .colorBar {
+                position: absolute;
+                width: 300px;
+                height: 15px;
+                top: 80px;
+                left: 100px;
+            }
+            .teamRight .colorBar {
+                position: absolute;
+                width: 300px;
+                height: 15px;
+                top: 80px;
+            }
+            .titleBox {
+                position: absolute;
+                width: 100%;
+                left: 760px;
+                color: white;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                display: inline;
+            }
+            .titleText {
+                width: 400px;
+                position: absolute;
+                font-size: 100px;
+                color: #081534;
+                left: 110px;
+                top: 0px;
+            }
+            .bottomBorder {
+                position: absolute;
+                top: 980px;
+                height: 100px;
+                width: 1920px;
+                background-color: white;
+            }
+            .teamLeftBorder {
+                position: absolute;
+                width: 100%;
+                left: 355px;
+            }
+            .teamRightBorder {
+                position: absolute;
+                width: 100%;
+                left: 1160px;
+            }
+            .titleBorder {
+                position: absolute;
+                width: 100%;
+                left: 755px;
+                height: 100%;
+            }
+            .completeTeamStats {
+                width: 1920px;
+                height: 1080px;
+                background-color: #081534;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="completeTeamStats">
+            <div class="teamInformation">
+                <div class="teamLeftBorder">
+                    <img src="../backgrounds/teamNameBorder.png">
+                </div>
+                <div class="teamRightBorder">
+                    <img src="../backgrounds/teamNameBorderInverted.png">
+                </div>
+                <div class="teamLeft">
+                    <img src="../backgrounds/teamNameBackground.png">
+                    <div class="score"></div>
+                    <div class="name"></div>
+                    <div class="colorBar"></div>
+                </div>
+                <div class="teamRight">
+                    <img src="../backgrounds/teamNameBackgroundInverted.png">
+                    <div class="score"></div>
+                    <div class="name"></div>
+                    <div class="colorBar"></div>
+                </div>
+                <div class="titleBorder">
+                    <img src="../backgrounds/scoreboardClockBlueBorder.png">
+                </div>
+                <div class="titleBox">
+                    <img src="../backgrounds/scoreboardClockBackground.png">
+                    <div class="titleText">RLFS</div>
+                </div>
+            </div>
+            <table class="teamLeftTable">
+                <tr class="name">
+                    <td class="playerOne">Player One</td>
+                    <td class="playerTwo">Player Two</td>
+                    <td class="playerThree">Player Three</td>
+                </tr>
+                <tr class="score">
+                    <td class="playerOne">0</td>
+                    <td class="playerTwo">0</td>
+                    <td class="playerThree">0</td>
+                </tr>
+                <tr class="goals">
+                    <td class="playerOne">0</td>
+                    <td class="playerTwo">0</td>
+                    <td class="playerThree">0</td>
+                </tr>
+                <tr class="shots">
+                    <td class="playerOne">0</td>
+                    <td class="playerTwo">0</td>
+                    <td class="playerThree">0</td>
+                </tr>
+                <tr class="assists">
+                    <td class="playerOne">0</td>
+                    <td class="playerTwo">0</td>
+                    <td class="playerThree">0</td>
+                </tr>
+                <tr class="saves">
+                    <td class="playerOne">0</td>
+                    <td class="playerTwo">0</td>
+                    <td class="playerThree">0</td>
+                </tr>
+                <tr class="demos">
+                    <td class="playerOne">0</td>
+                    <td class="playerTwo">0</td>
+                    <td class="playerThree">0</td>
+                </tr>
+            </table>
+            <table class="titlesTable">
+                <tr class="name"><td></td></tr>
+                <tr class="score">
+                    <td>Score</td>
+                </tr>
+                <tr class="goals">
+                    <td>Goals</td>
+                </tr>
+                <tr class="shots">
+                    <td>Shots</td>
+                </tr>
+                <tr class="assists">
+                    <td>Assists</td>
+                </tr>
+                <tr class="saves">
+                    <td>Saves</td>
+                </tr>
+                <tr class="demos">
+                    <td>Demos</td>
+                </tr>
+            </table>
+            <table class="teamRightTable">
+                <tr class="name">
+                    <td class="playerOne">Player One</td>
+                    <td class="playerTwo">Player Two</td>
+                    <td class="playerThree">Player Three</td>
+                </tr>
+                <tr class="score">
+                    <td class="playerOne">0</td>
+                    <td class="playerTwo">0</td>
+                    <td class="playerThree">0</td>
+                </tr>
+                <tr class="goals">
+                    <td class="playerOne">0</td>
+                    <td class="playerTwo">0</td>
+                    <td class="playerThree">0</td>
+                </tr>
+                <tr class="shots">
+                    <td class="playerOne">0</td>
+                    <td class="playerTwo">0</td>
+                    <td class="playerThree">0</td>
+                </tr>
+                <tr class="assists">
+                    <td class="playerOne">0</td>
+                    <td class="playerTwo">0</td>
+                    <td class="playerThree">0</td>
+                </tr>
+                <tr class="saves">
+                    <td class="playerOne">0</td>
+                    <td class="playerTwo">0</td>
+                    <td class="playerThree">0</td>
+                </tr>
+                <tr class="demos">
+                    <td class="playerOne">0</td>
+                    <td class="playerTwo">0</td>
+                    <td class="playerThree">0</td>
+                </tr>
+            </table>
+            <div class="bottomBorder"></div>
+        </div>
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="../javascript/webSocket.js"></script>
+        <script>
+            //WsSubscribers from webSocket.js
+            WsSubscribers.init(49322, true);
+            WsSubscribers.subscribe("game", "update_state", (d) => { 
+                //Rosters
+                    leftTeamRoster = []
+                    rightTeamRoster = []
+                    for (let player in d.players ) {
+                        if(d.players[player].team == 0)
+                            leftTeamRoster.push(player)
+                        else
+                            rightTeamRoster.push(player)
+                    };
+                    if(d['game']['time_seconds'] < 300 || d['game']['isOT']) {
+                        $(".teamInformation .teamLeft .name").text(d['game']['teams'][0]['name']);
+                        $(".teamInformation .teamRight .name").text(d['game']['teams'][1]['name']);
+                    
+                        $(".teamInformation .teamLeft .score").text(d['game']['teams'][0]['score']);
+                        $(".teamInformation .teamRight .score").text(d['game']['teams'][1]['score']);
+
+                        $(".teamInformation .teamLeft .colorBar").css("background-color", d['game']['teams'][0]['color_primary']);
+                        $(".teamInformation .teamRight .colorBar").css("background-color", d['game']['teams'][1]['color_primary']);
+                
+                        $(".teamLeftTable .name .playerOne").text(d['players'][leftTeamRoster[0]]['name'])
+                        $(".teamLeftTable .score .playerOne").text(d['players'][leftTeamRoster[0]]['score'])
+                        $(".teamLeftTable .goals .playerOne").text(d['players'][leftTeamRoster[0]]['goals'])
+                        $(".teamLeftTable .shots .playerOne").text(d['players'][leftTeamRoster[0]]['shots'])
+                        $(".teamLeftTable .assists .playerOne").text(d['players'][leftTeamRoster[0]]['assists'])
+                        $(".teamLeftTable .saves .playerOne").text(d['players'][leftTeamRoster[0]]['saves'])
+                        $(".teamLeftTable .demos .playerOne").text(d['players'][leftTeamRoster[0]]['demos'])
+
+                        $(".teamLeftTable .name .playerTwo").text(d['players'][leftTeamRoster[1]]['name'])
+                        $(".teamLeftTable .score .playerTwo").text(d['players'][leftTeamRoster[1]]['score'])
+                        $(".teamLeftTable .goals .playerTwo").text(d['players'][leftTeamRoster[1]]['goals'])
+                        $(".teamLeftTable .shots .playerTwo").text(d['players'][leftTeamRoster[1]]['shots'])
+                        $(".teamLeftTable .assists .playerTwo").text(d['players'][leftTeamRoster[1]]['assists'])
+                        $(".teamLeftTable .saves .playerTwo").text(d['players'][leftTeamRoster[1]]['saves'])
+                        $(".teamLeftTable .demos .playerTwo").text(d['players'][leftTeamRoster[1]]['demos'])
+
+                        $(".teamLeftTable .name .playerThree").text(d['players'][leftTeamRoster[2]]['name'])
+                        $(".teamLeftTable .score .playerThree").text(d['players'][leftTeamRoster[2]]['score'])
+                        $(".teamLeftTable .goals .playerThree").text(d['players'][leftTeamRoster[2]]['goals'])
+                        $(".teamLeftTable .shots .playerThree").text(d['players'][leftTeamRoster[2]]['shots'])
+                        $(".teamLeftTable .assists .playerThree").text(d['players'][leftTeamRoster[2]]['assists'])
+                        $(".teamLeftTable .saves .playerThree").text(d['players'][leftTeamRoster[2]]['saves'])
+                        $(".teamLeftTable .demos .playerThree").text(d['players'][leftTeamRoster[2]]['demos'])
+
+                        $(".teamRightTable .name .playerOne").text(d['players'][rightTeamRoster[0]]['name'])
+                        $(".teamRightTable .score .playerOne").text(d['players'][rightTeamRoster[0]]['score'])
+                        $(".teamRightTable .goals .playerOne").text(d['players'][rightTeamRoster[0]]['goals'])
+                        $(".teamRightTable .shots .playerOne").text(d['players'][rightTeamRoster[0]]['shots'])
+                        $(".teamRightTable .assists .playerOne").text(d['players'][rightTeamRoster[0]]['assists'])
+                        $(".teamRightTable .saves .playerOne").text(d['players'][rightTeamRoster[0]]['saves'])
+                        $(".teamRightTable .demos .playerOne").text(d['players'][rightTeamRoster[0]]['demos'])
+
+                        $(".teamRightTable .name .playerTwo").text(d['players'][rightTeamRoster[1]]['name'])
+                        $(".teamRightTable .score .playerTwo").text(d['players'][rightTeamRoster[1]]['score'])
+                        $(".teamRightTable .goals .playerTwo").text(d['players'][rightTeamRoster[1]]['goals'])
+                        $(".teamRightTable .shots .playerTwo").text(d['players'][rightTeamRoster[1]]['shots'])
+                        $(".teamRightTable .assists .playerTwo").text(d['players'][rightTeamRoster[1]]['assists'])
+                        $(".teamRightTable .saves .playerTwo").text(d['players'][rightTeamRoster[1]]['saves'])
+                        $(".teamRightTable .demos .playerTwo").text(d['players'][rightTeamRoster[1]]['demos'])
+
+                        $(".teamRightTable .name .playerThree").text(d['players'][rightTeamRoster[2]]['name'])
+                        $(".teamRightTable .score .playerThree").text(d['players'][rightTeamRoster[2]]['score'])
+                        $(".teamRightTable .goals .playerThree").text(d['players'][rightTeamRoster[2]]['goals'])
+                        $(".teamRightTable .shots .playerThree").text(d['players'][rightTeamRoster[2]]['shots'])
+                        $(".teamRightTable .assists .playerThree").text(d['players'][rightTeamRoster[2]]['assists'])
+                        $(".teamRightTable .saves .playerThree").text(d['players'][rightTeamRoster[2]]['saves'])
+                        $(".teamRightTable .demos .playerThree").text(d['players'][rightTeamRoster[2]]['demos'])
+                    }
+                });
+        </script>
+    </body>
+</html>
