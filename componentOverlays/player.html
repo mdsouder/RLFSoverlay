@@ -82,7 +82,7 @@
                     };             
 
                     //Game State Graphics
-                    if(!d['game']['hasTarget']) {
+                    if(!d['game']['hasTarget'] || d['game']['isReplay']) {
                         $(".completePlayerStats").fadeTo(0,0.0)
                     }
                     else {
