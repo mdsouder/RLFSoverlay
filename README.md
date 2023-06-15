@@ -1,7 +1,7 @@
 # RLFSoverlay
 How to set up and use RLFS Overlay
 
-**Current Version: 2.2 - June 13, 2023**
+**Current Version: 2.3 - June 14, 2023**
 * View wiki for versions and changelogs -> https://github.com/mdsouder/RLFSoverlay/wiki
 
 # First Time Setup
