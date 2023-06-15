@@ -121,21 +121,46 @@
                             leftTeamRoster.push(player)
                         else
                             rightTeamRoster.push(player)
-                    };             
+                    };
 
-                    $(".teamLeft .playerOne .leftName").text(d['players'][leftTeamRoster[0]]['name'])
-                    $(".teamLeft .playerOne .leftBoostBar").width(200*(d['players'][leftTeamRoster[0]]['boost']/100))
-                    $(".teamLeft .playerTwo .leftName").text(d['players'][leftTeamRoster[1]]['name'])
-                    $(".teamLeft .playerTwo .leftBoostBar").width(200*(d['players'][leftTeamRoster[1]]['boost']/100))
-                    $(".teamLeft .playerThree .leftName").text(d['players'][leftTeamRoster[2]]['name'])
-                    $(".teamLeft .playerThree .leftBoostBar").width(200*(d['players'][leftTeamRoster[2]]['boost']/100))
+                    leftTeamRosterSize = leftTeamRoster.length;
+                    rightTeamRosterSize = rightTeamRoster.length;
 
-                    $(".teamRight .playerOne .rightName").text(d['players'][rightTeamRoster[0]]['name'])
-                    $(".teamRight .playerOne .rightBoostBar").width(200*(d['players'][rightTeamRoster[0]]['boost']/100))
-                    $(".teamRight .playerTwo .rightName").text(d['players'][rightTeamRoster[1]]['name'])
-                    $(".teamRight .playerTwo .rightBoostBar").width(200*(d['players'][rightTeamRoster[1]]['boost']/100))
-                    $(".teamRight .playerThree .rightName").text(d['players'][rightTeamRoster[2]]['name'])
-                    $(".teamRight .playerThree .rightBoostBar").width(200*(d['players'][rightTeamRoster[2]]['boost']/100))
+                    $(".playerOne").fadeTo(0,0.0)
+                    $(".playerTwo").fadeTo(0,0.0)
+                    $(".playerThree").fadeTo(0,0.0)
+
+                    if (leftTeamRosterSize >= 1) {
+                        $(".teamLeft .playerOne .leftName").text(d['players'][leftTeamRoster[0]]['name'])
+                        $(".teamLeft .playerOne .leftBoostBar").width(200*(d['players'][leftTeamRoster[0]]['boost']/100))
+                        $(".teamLeft .playerOne").fadeTo(0,1.0)
+                        if (leftTeamRosterSize >= 2) {
+                            $(".teamLeft .playerTwo .leftName").text(d['players'][leftTeamRoster[1]]['name'])
+                            $(".teamLeft .playerTwo .leftBoostBar").width(200*(d['players'][leftTeamRoster[1]]['boost']/100))
+                            $(".teamLeft .playerTwo").fadeTo(0,1.0)
+                            if (leftTeamRosterSize >= 3) {
+                                $(".teamLeft .playerThree .leftName").text(d['players'][leftTeamRoster[2]]['name'])
+                                $(".teamLeft .playerThree .leftBoostBar").width(200*(d['players'][leftTeamRoster[2]]['boost']/100))
+                                $(".teamLeft .playerThree").fadeTo(0,1.0)
+                            }
+                        }
+                    }
+                    
+                    if (rightTeamRosterSize >= 1) {
+                        $(".teamRight .playerOne .rightName").text(d['players'][rightTeamRoster[0]]['name'])
+                        $(".teamRight .playerOne .rightBoostBar").width(200*(d['players'][rightTeamRoster[0]]['boost']/100))
+                        $(".teamRight .playerOne").fadeTo(0,1.0)
+                        if (rightTeamRosterSize >= 2) {
+                            $(".teamRight .playerTwo .rightName").text(d['players'][rightTeamRoster[1]]['name'])
+                            $(".teamRight .playerTwo .rightBoostBar").width(200*(d['players'][rightTeamRoster[1]]['boost']/100))
+                            $(".teamRight .playerTwo").fadeTo(0,1.0)
+                            if (rightTeamRosterSize >= 3) {
+                                $(".teamRight .playerThree .rightName").text(d['players'][rightTeamRoster[2]]['name'])
+                                $(".teamRight .playerThree .rightBoostBar").width(200*(d['players'][rightTeamRoster[2]]['boost']/100))
+                                $(".teamRight .playerThree").fadeTo(0,1.0)
+                            }
+                        }
+                    }
                 });
 
             const eventsToIcons = { Shot: "../icons/shot_on_goal_icon.png",
